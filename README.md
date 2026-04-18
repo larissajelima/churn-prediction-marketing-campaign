@@ -4,9 +4,11 @@
 
 ## 🚀 Resultado Principal
 
-O modelo com threshold ajustado (0.1) gerou o maior lucro,
-indicando que uma abordagem mais agressiva é mais vantajosa
-quando o valor da venda é significativamente maior que o custo da campanha.
+📈 Melhor estratégia: Threshold = 0.1  
+💰 Maior lucro obtido: (coloca um número real seu)  
+
+➡️ Estratégia agressiva se mostrou mais eficiente,
+pois o valor da venda supera o custo da campanha.
 
 ---
 
@@ -18,6 +20,15 @@ Cada contato tem um custo, e nem todos os clientes aceitam a oferta.
 O objetivo deste projeto é prever quais clientes têm maior probabilidade de aceitar,
 permitindo otimizar a campanha e maximizar o lucro.
 
+---
+
+## 🧠 Problema de Negócio
+
+Sem modelo:
+a empresa impactaria todos os clientes → alto custo
+
+Com modelo:
+é possível focar apenas nos clientes com maior probabilidade de conversão
 ---
 
 ## 📊 Decisão de Negócio
