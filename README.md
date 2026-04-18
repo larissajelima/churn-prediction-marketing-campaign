@@ -1,118 +1,142 @@
-# 📊 Predição de Churn em Campanha de Marketing
+# 📊 Predição de Churn para Otimização de Campanhas de Marketing
+
+🚀 **Notebook completo disponível no Colab:**  
+👉 https://colab.research.google.com/drive/1Ex-zEG7KYSD0AbRQmDrE9TalJcRZ34YC?usp=sharing  
+
+> 💡 Recomenda-se abrir o notebook no Colab para visualizar todas as etapas e resultados.
 
 ---
 
 ## 🚀 Resultado Principal
 
-📈 Melhor estratégia: Threshold = 0.1  
-💰 Maior lucro obtido: (coloca um número real seu)  
+📈 Melhor estratégia: **Threshold = 0.1**  
+💰 Estratégia mais lucrativa: abordagem **agressiva**  
 
-➡️ Estratégia agressiva se mostrou mais eficiente,
-pois o valor da venda supera o custo da campanha.
+➡️ O modelo com threshold mais baixo gerou maior lucro,  
+pois o valor da venda compensa o custo de abordar clientes que não convertem.
 
 ---
 
 ## 🎯 Objetivo
 
-Uma empresa realiza campanhas de marketing para oferecer um produto.
-Cada contato tem um custo, e nem todos os clientes aceitam a oferta.
+Empresas que realizam campanhas de marketing enfrentam um desafio:
+
+- cada contato com cliente tem custo  
+- nem todos os clientes aceitam a oferta  
 
 O objetivo deste projeto é prever quais clientes têm maior probabilidade de aceitar,
-permitindo otimizar a campanha e maximizar o lucro.
+permitindo direcionar campanhas de forma mais eficiente e maximizar o lucro.
 
 ---
 
-## 🧠 Problema de Negócio
+## 🧠 Estratégia de Negócio
 
-Sem modelo:
-a empresa impactaria todos os clientes → alto custo
+Neste projeto, a decisão NÃO é baseada apenas em acurácia.
 
-Com modelo:
-é possível focar apenas nos clientes com maior probabilidade de conversão
----
+O foco é maximizar o retorno financeiro considerando:
 
-## 📊 Decisão de Negócio
-
-Nem sempre o modelo com maior acurácia gera mais lucro.
-
-Neste projeto, a decisão é baseada no retorno financeiro considerando:
-
-- valor da venda
-- custo da campanha
-- previsões do modelo
-
----
-
-## 📈 Resultados
-
-- Melhor threshold: **0.1**
-- Estratégia: **agressiva**
-- Recall alto (captura a maioria dos clientes que aceitariam)
-- Maior lucro obtido no cenário analisado
-
----
-
-## 📌 Principais Insights
-
-O modelo inicial apresentou desempenho equilibrado,
-mas com perda significativa de clientes potenciais.
-
-Ao ajustar o threshold e priorizar recall,
-foi possível aumentar o lucro da campanha,
-mesmo com maior custo operacional.
-
-Isso demonstra que decisões baseadas em métricas de negócio
-são mais relevantes do que métricas tradicionais como acurácia.
+- valor da venda  
+- custo da campanha  
+- erros do modelo (falsos positivos e falsos negativos)  
 
 ---
 
 ## ⚙️ Etapas do Projeto
 
-🔹 1. Carregamento dos Dados  
-
-🔹 2. Limpeza e Preparação  
+### 1. Preparação dos Dados
+- verificação de tipos e consistência  
+- tratamento de variáveis categóricas (`get_dummies`)  
 - remoção de variável com leakage (`duration`)  
-- encoding de variáveis categóricas (`get_dummies`)  
 
-🔹 3. Modelagem  
+---
+
+### 2. Modelagem
 - Decision Tree  
 - comparação entre modelo padrão e com `class_weight='balanced'`  
 
-🔹 4. Avaliação  
+---
+
+### 3. Avaliação
 - matriz de confusão  
 - precision, recall e f1-score  
 
-🔹 5. Otimização de Estratégia  
-- ajuste de threshold  
-- cálculo de lucro baseado em TP e FP  
+---
 
-🔹 6. Resultado Final  
-- escolha do threshold com maior retorno financeiro  
+### 4. Otimização de Estratégia
+- uso de probabilidades (`predict_proba`)  
+- teste de diferentes thresholds  
+- cálculo de lucro por estratégia  
+
+---
+
+## 📈 Resultados
+
+- Modelo inicial: comportamento mais conservador  
+- Perda significativa de clientes potenciais (alto falso negativo)  
+
+Após ajuste:
+
+- aumento do recall  
+- redução de perdas de clientes  
+- aumento do custo operacional (mais campanhas)  
+- **lucro total maior**
+
+---
+
+## 💰 Lógica de Negócio
+
+A decisão foi baseada na seguinte fórmula:
+lucro = (TP * valor_venda) - ((TP + FP) * custo_campanha)
+
+Onde:
+
+- TP → clientes que aceitaram e foram corretamente previstos  
+- FP → clientes abordados que não aceitaram  
+
+---
+
+## 🧠 Insight Principal
+
+O melhor modelo não é o mais preciso.
+
+👉 É o que gera mais valor para o negócio.
+
+Ao reduzir o threshold, o modelo se torna mais agressivo,
+capturando mais clientes com potencial de conversão.
+
+Mesmo com maior custo de campanha, o retorno financeiro foi superior.
+
+---
+
+## 📊 Visualização
+
+O gráfico de lucro por threshold mostra claramente que estratégias mais agressivas
+geram maior retorno neste cenário.
 
 ---
 
 ## 🧠 Conclusão
 
-Este projeto demonstra que a escolha do modelo não deve ser baseada apenas em acurácia,
-mas sim no impacto financeiro da decisão.
+Este projeto demonstra que:
 
-Ao ajustar o threshold, foi possível transformar um modelo comum
-em uma estratégia mais lucrativa para o negócio.
+- métricas tradicionais como acurácia nem sempre são suficientes  
+- decisões devem ser guiadas por impacto financeiro  
+- ajustes simples como threshold podem transformar a estratégia  
 
 ---
 
 ## 🗂️ Estrutura do Projeto
-
-```text
+```
 churn-prediction-marketing-campaign/
 │
-├── notebook.ipynb
+├── churn_marketing_profit_optimization.ipynb
 └── README.md
-
-## 👩‍💻 Autor
-
-**Larissa Lima**
-📍 Brasil
-🎯 Em transição para Analista de BI
+```
 
 ---
+
+## 👩‍💻 Autora
+
+**Larissa Lima**  
+📍 Brasil  
+🎯 Transição para área de Dados / BI
