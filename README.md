@@ -2,24 +2,42 @@
 
 ---
 
+## 🚀 Resultado Principal
+
+O modelo com threshold ajustado (0.1) gerou o maior lucro,
+indicando que uma abordagem mais agressiva é mais vantajosa
+quando o valor da venda é significativamente maior que o custo da campanha.
+
+---
+
 ## 🎯 Objetivo
 
-Uma empresa faz campanhas de marketing para oferecer um produto.
-O custo de contato existe, e nem todos os clientes aceitam.
+Uma empresa realiza campanhas de marketing para oferecer um produto.
+Cada contato tem um custo, e nem todos os clientes aceitam a oferta.
 
-O objetivo é usar dados para prever quais clientes têm maior chance de aceitar,
-e assim maximizar o lucro da campanha.
+O objetivo deste projeto é prever quais clientes têm maior probabilidade de aceitar,
+permitindo otimizar a campanha e maximizar o lucro.
 
 ---
 
 ## 📊 Decisão de Negócio
 
-Nem todo modelo com maior acurácia gera mais lucro.
-A decisão será baseada no retorno financeiro considerando:
+Nem sempre o modelo com maior acurácia gera mais lucro.
+
+Neste projeto, a decisão é baseada no retorno financeiro considerando:
 
 - valor da venda
 - custo da campanha
-- taxa de acerto do modelo
+- previsões do modelo
+
+---
+
+## 📈 Resultados
+
+- Melhor threshold: **0.1**
+- Estratégia: **agressiva**
+- Recall alto (captura a maioria dos clientes que aceitariam)
+- Maior lucro obtido no cenário analisado
 
 ---
 
@@ -39,48 +57,46 @@ são mais relevantes do que métricas tradicionais como acurácia.
 
 ## ⚙️ Etapas do Projeto
 
-🔹 1. Carregamento dos Dados
-🔹 2. Limpeza e preparação dos dados
-- limpeza
-- remoção de duration (leakage)
-- encoding (get_dummies)
-🔹 2. Modelagem
-- Decision Tree
-- versão normal vs balanced
-🔹 3. Avaliação
-- matriz de confusão
-- precision / recall
-🔹 4. Ajuste de estratégia
-- uso de threshold
-- análise de lucro
-🔹 5. Resultado final
+🔹 1. Carregamento dos Dados  
+
+🔹 2. Limpeza e Preparação  
+- remoção de variável com leakage (`duration`)  
+- encoding de variáveis categóricas (`get_dummies`)  
+
+🔹 3. Modelagem  
+- Decision Tree  
+- comparação entre modelo padrão e com `class_weight='balanced'`  
+
+🔹 4. Avaliação  
+- matriz de confusão  
+- precision, recall e f1-score  
+
+🔹 5. Otimização de Estratégia  
+- ajuste de threshold  
+- cálculo de lucro baseado em TP e FP  
+
+🔹 6. Resultado Final  
+- escolha do threshold com maior retorno financeiro  
+
+---
+
+## 🧠 Conclusão
+
+Este projeto demonstra que a escolha do modelo não deve ser baseada apenas em acurácia,
+mas sim no impacto financeiro da decisão.
+
+Ao ajustar o threshold, foi possível transformar um modelo comum
+em uma estratégia mais lucrativa para o negócio.
 
 ---
 
 ## 🗂️ Estrutura do Projeto
 
 ```text
-churn-prediction-marketing-campaigns/
+churn-prediction-marketing-campaign/
 │
-├── data/
-│   └── raw/
-│       ├── import_kaggle.py
-│       └── load_data.py
-│
-├── insights/
-│   └── principais_insights.md
-│
-├── python/
-│   ├── limpeza.py
-│   ├── preparacao.py
-│   ├── modelo.py
-│   ├── avaliação.py
-│   └── threshold_lucro.py
-│
+├── notebook.ipynb
 └── README.md
-```
-
----
 
 ## 👩‍💻 Autor
 
